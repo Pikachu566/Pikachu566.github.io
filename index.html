@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Message for You</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('background-image.png');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+  }
+  h2 {
+    color: #ff6f61;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .button-group {
+    display: flex;
+    justify-content: center;
+  }
+  button {
+    background-color: #1abc9c;
+    border: none;
+    color: #ffffff;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background-color: #16a085;
+  }
+  /* Animasi hati */
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .heart {
+    position: absolute;
+    width: 100px;
+    height: 90px;
+    background-image: url('hati-image.png');
+    background-size: cover;
+    animation: heartbeat 1s infinite;
+    bottom: -50px;
+    left: calc(50% - 50px);
+  }
+</style>
+<body>
+		<div class="container">
+        <h2 class="question">Kau Nak Tahu Something Tak?</h2>
+        <h2 class="question">Sebenarnya Dalam Hati Aku Ada Kau Sorang Je, And Now Aku Tengah Rindu</h2>
+        <h2 class="question">Rindu Kau...</h2>
+  <img src="AskCrush.png" alt="Love Image">
+  <div class="button-group">
+    <button onclick="sendWhatsAppMessage('Yes')">Rindu Awak Juga</button>
+    <button onclick="sendWhatsAppMessage('No')">Tak Rindu Pun</button>
+  </div>
+  <div class="heart"></div>
+</div>
+<script>
+function sendWhatsAppMessage(answer) {
+  var phoneNumber = '601155000904';
+  var message = answer === 'Yes' ? 'I love you too! 💖' : 'It\'s okay. I understand. 😔';
+  var url = 'https://api.whatsapp.com/send?phone=' + phoneNumber + '&text=' + encodeURIComponent(message);
+  window.open(url, '_blank');
+}
+</script>
+</body>
+</html>
+
