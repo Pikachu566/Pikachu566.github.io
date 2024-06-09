@@ -1,106 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Message for You</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-image: url('background-image.png');
-    background-size: cover;
-    background-position: center;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-  }
-  .container {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    max-width: 500px;
-    text-align: center;
-    position: relative;
-  }
-  h2 {
-    color: #ff6f61;
-    font-size: 1.8em;
-    margin-bottom: 20px;
-  }
-  img {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  .button-group {
-    display: flex;
-    justify-content: center;
-  }
-  button {
-    background-color: #1abc9c;
-    border: none;
-    color: #ffffff;
-    padding: 15px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1em;
-    margin: 0 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  button:hover {
-    background-color: #16a085;
-  }
-  /* Animasi hati */
-  @keyframes heartbeat {
-    0% {
-      transform: scale(1);
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soalan Untuk Awak</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
     }
-    50% {
-      transform: scale(1.1);
+    video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+      background: no-repeat;
+      background-size: cover;
     }
-    100% {
-      transform: scale(1);
+    .container {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
     }
-  }
-  .heart {
-    position: absolute;
-    width: 100px;
-    height: 90px;
-    background-image: url('hati-image.png');
-    background-size: cover;
-    animation: heartbeat 1s infinite;
-    bottom: -50px;
-    left: calc(50% - 50px);
-  }
-</style>
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+    .question1 {
+      color: #4682b4; /* SteelBlue */
+    }
+    .question2 {
+      color: #4682b4; /* SteelBlue */
+    }
+    img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .button-group {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+    button {
+      background-color: #1abc9c;
+      border: none;
+      color: #ffffff;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1em;
+      margin: 0 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #16a085;
+    }
+    #noButton {
+      background-color: #e74c3c;
+    }
+    #noButton:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
 <body>
-		<div class="container">
-        <h2 class="question">Kau Nak Tahu Something Tak?</h2>
-        <h2 class="question">Sebenarnya Dalam Hati Aku Ada Kau Sorang Je, And Now Aku Tengah Rindu</h2>
-        <h2 class="question">Rindu Kau...</h2>
-  <img src="AskCrush.png" alt="Love Image">
-  <div class="button-group">
-    <button onclick="sendWhatsAppMessage('Yes')">Rindu Awak Juga</button>
-    <button onclick="sendWhatsAppMessage('No')">Tak Rindu Pun</button>
+  <video autoplay muted loop>
+    <source src="video1.mp4" type="video/mp4">
+  </video>
+  <div class="container" id="page1">
+    <h2 class="question question1">Tak ada orang crush dengan aku ke?😕</h2>
+    <h2 class="question question2">Cubalah tekan "YES" mana tahu aku pun suka Kau😅</h2>
+    <img src="AskCrush.png" alt="Love Image">
+    <div class="button-group">
+      <button id="yesButton" onclick="showPage2()">Yes</button>
+      <button id="noButton" onmouseover="moveNoButton()">No</button>
+    </div>
   </div>
-  <div class="heart"></div>
-</div>
-<script>
-function sendWhatsAppMessage(answer) {
-  var phoneNumber = '601155000904';
-  var message = answer === 'Yes' ? 'I love you too! 💖' : 'It\'s okay. I understand. 😔';
-  var url = 'https://api.whatsapp.com/send?phone=' + phoneNumber + '&text=' + encodeURIComponent(message);
-  window.open(url, '_blank');
-}
-</script>
+
+  <div class="container" id="page2" style="display: none;">
+    <h2 class="question">You like me?</h2>
+    <img class="gif" alt="gif" src="gifyou.webp">
+    <div class="button-group">
+      <button id="nextButton" onclick="showPage3()">Next</button>
+    </div>
+  </div>
+
+  <div class="container" id="page3" style="display: none;">
+    <h2 class="question">Are you sure?</h2>
+    <img class="gifyou" alt="gif" src="gif.webp">
+    <div class="button-group">
+      <button id="continueButton" onclick="window.location.href='https://forms.gle/1N3Y1ybZzYVr76z1A'">Next</button>
+    </div>
+  </div>
+
+  <script>
+    function moveNoButton() {
+      var noButton = document.getElementById('noButton');
+      var container = document.querySelector('.container');
+      var containerRect = container.getBoundingClientRect();
+      var buttonRect = noButton.getBoundingClientRect();
+      var x, y;
+
+      // Generate new random position within the container bounds
+      do {
+        x = Math.random() * (containerRect.width - buttonRect.width);
+        y = Math.random() * (containerRect.height - buttonRect.height);
+      } while (
+        (x + buttonRect.width > containerRect.width) ||
+        (y + buttonRect.height > containerRect.height) ||
+        (x < 0) ||
+        (y < 0)
+      );
+
+      noButton.style.position = 'absolute';
+      noButton.style.left = x + 'px';
+      noButton.style.top = y + 'px';
+    }
+
+    function showPage2() {
+      document.getElementById('page1').style.display = 'none';
+      document.getElementById('page2').style.display = 'block';
+    }
+
+    function showPage3() {
+      document.getElementById('page2').style.display = 'none';
+      document.getElementById('page3').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
-
