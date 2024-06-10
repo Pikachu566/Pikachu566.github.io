@@ -34,7 +34,7 @@
     }
 
     .container {
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(255, 255, 255, 0.7);
       border-radius: 10px;
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
       padding: 20px;
@@ -48,16 +48,11 @@
     h2 {
       font-size: 1.5em;
       margin-bottom: 20px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Enhancing text shadow */
     }
 
-    .question1 {
-      color: #4682b4;
-      /* SteelBlue */
-    }
-
-    .question2 {
-      color: #4682b4;
-      /* SteelBlue */
+    .question1, .question2, .question3, .question4 {
+      color: #b22222; /* FireBrick (deep red) */
     }
 
     img {
@@ -118,7 +113,7 @@
   </div>
 
   <div class="container" id="page2" style="display: none;">
-    <h2 class="question">Serius la suka aku?</h2>
+    <h2 class="question question3">Serius la suka aku?</h2>
     <img class="gif" alt="gif" src="gifyou.webp">
     <div class="button-group">
       <button id="backButton" onclick="showPage1()">Back</button>
@@ -127,7 +122,7 @@
   </div>
 
   <div class="container" id="page3" style="display: none;">
-    <h2 class="question">Are you sure?</h2>
+    <h2 class="question question4">Are you sure?</h2>
     <img class="gifyou" alt="gif" src="gif.webp">
     <div class="button-group">
       <button id="backButton" onclick="showPage2()">Back</button>
@@ -180,4 +175,3 @@
 </body>
 
 </html>
-
