@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,9 @@
       height: 100vh;
       overflow: hidden;
       position: relative;
+      background-color: #f0f0f0;
     }
+
     video {
       position: absolute;
       top: 50%;
@@ -29,80 +32,96 @@
       background: no-repeat;
       background-size: cover;
     }
+
     .container {
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.9);
       border-radius: 10px;
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
       padding: 20px;
       max-width: 500px;
+      width: 90%;
       text-align: center;
       position: relative;
       z-index: 1;
     }
+
     h2 {
       font-size: 1.5em;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
+
     .question1 {
-      color: #4682b4; /* SteelBlue */
+      color: #4682b4;
+      /* SteelBlue */
     }
+
     .question2 {
-      color: #4682b4; /* SteelBlue */
+      color: #4682b4;
+      /* SteelBlue */
     }
+
     img {
       width: 100%;
       max-width: 300px;
       border-radius: 10px;
-      margin-bottom: 20px;
+      margin: 0 auto 20px;
+      display: block;
     }
+
     .button-group {
       display: flex;
       justify-content: center;
-      position: relative;
+      gap: 10px;
+      /* Space between buttons */
+      margin-top: 20px;
     }
-    button {
+
+    .button-group button {
       background-color: #1abc9c;
       border: none;
       color: #ffffff;
       padding: 15px 30px;
       text-align: center;
       text-decoration: none;
-      display: inline-block;
       font-size: 1em;
-      margin: 0 10px;
       cursor: pointer;
       border-radius: 5px;
       transition: background-color 0.3s;
     }
-    button:hover {
+
+    .button-group button:hover {
       background-color: #16a085;
     }
+
     #noButton {
       background-color: #e74c3c;
     }
+
     #noButton:hover {
       background-color: #c0392b;
     }
   </style>
 </head>
+
 <body>
   <video autoplay muted loop>
     <source src="video1.mp4" type="video/mp4">
   </video>
   <div class="container" id="page1">
-    <h2 class="question question1">Tak ada orang crush dengan aku ke?😕</h2>
-    <h2 class="question question2">Cubalah tekan "YES" mana tahu aku pun suka Kau😅</h2>
+    <h2 class="question question1">Takde orang crush dengan aku ke😕?</h2>
+    <h2 class="question question2">Kalau suka aku tekan button "YES" mana tahu aku pun suka kau😅.</h2>
     <img src="AskCrush.png" alt="Love Image">
     <div class="button-group">
-      <button id="yesButton" onclick="showPage2()">Yes</button>
       <button id="noButton" onmouseover="moveNoButton()">No</button>
+      <button id="yesButton" onclick="showPage2()">Yes</button>
     </div>
   </div>
 
   <div class="container" id="page2" style="display: none;">
-    <h2 class="question">You like me?</h2>
+    <h2 class="question">Serius la suka aku?</h2>
     <img class="gif" alt="gif" src="gifyou.webp">
     <div class="button-group">
+      <button id="backButton" onclick="showPage1()">Back</button>
       <button id="nextButton" onclick="showPage3()">Next</button>
     </div>
   </div>
@@ -111,7 +130,8 @@
     <h2 class="question">Are you sure?</h2>
     <img class="gifyou" alt="gif" src="gif.webp">
     <div class="button-group">
-      <button id="continueButton" onclick="window.location.href='https://forms.gle/1N3Y1ybZzYVr76z1A'">Next</button>
+      <button id="backButton" onclick="showPage2()">Back</button>
+      <button id="continueButton" onclick="window.location.href='https://forms.gle/1N3Y1ybZzYVr76z1A'">I'm sure</button>
     </div>
   </div>
 
@@ -139,15 +159,25 @@
       noButton.style.top = y + 'px';
     }
 
+    function showPage1() {
+      document.getElementById('page2').style.display = 'none';
+      document.getElementById('page3').style.display = 'none';
+      document.getElementById('page1').style.display = 'block';
+    }
+
     function showPage2() {
       document.getElementById('page1').style.display = 'none';
+      document.getElementById('page3').style.display = 'none';
       document.getElementById('page2').style.display = 'block';
     }
 
     function showPage3() {
+      document.getElementById('page1').style.display = 'none';
       document.getElementById('page2').style.display = 'none';
       document.getElementById('page3').style.display = 'block';
     }
   </script>
 </body>
+
 </html>
+
