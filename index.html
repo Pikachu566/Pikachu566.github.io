@@ -21,16 +21,12 @@
 
     video {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       z-index: -1;
-      transform: translate(-50%, -50%);
-      background: no-repeat;
-      background-size: cover;
     }
 
     .container {
@@ -48,11 +44,11 @@
     h2 {
       font-size: 1.5em;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Enhancing text shadow */
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
     }
 
     .question1, .question2, .question3, .question4 {
-      color: #b22222; /* FireBrick (deep red) */
+      color: #b22222;
     }
 
     img {
@@ -67,7 +63,6 @@
       display: flex;
       justify-content: center;
       gap: 10px;
-      /* Space between buttons */
       margin-top: 20px;
     }
 
@@ -99,8 +94,9 @@
 </head>
 
 <body>
-  <video autoplay muted loop>
+  <video autoplay muted loop playsinline>
     <source src="video1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
   </video>
   <div class="container" id="page1">
     <h2 class="question question1">Takde orang crush dengan aku ke😕?</h2>
@@ -138,7 +134,6 @@
       var buttonRect = noButton.getBoundingClientRect();
       var x, y;
 
-      // Generate new random position within the container bounds
       do {
         x = Math.random() * (containerRect.width - buttonRect.width);
         y = Math.random() * (containerRect.height - buttonRect.height);
@@ -175,3 +170,4 @@
 </body>
 
 </html>
+
